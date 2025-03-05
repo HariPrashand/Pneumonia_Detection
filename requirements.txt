@@ -1,6 +1,5 @@
-streamlit
-tensorflow
-numpy
-PIL
-time
-huggingface_hub
+streamlit==1.42.0
+tensorflow==2.12.0rc0
+numpy==1.26.4
+Pillow==9.4.0
+huggingface-hub==0.26.1
