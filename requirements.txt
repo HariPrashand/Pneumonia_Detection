@@ -2,3 +2,4 @@ streamlit==1.42.0
 tensorflow
 huggingface
 huggingface-hub
+gradio_client
