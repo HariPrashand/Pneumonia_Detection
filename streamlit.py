@@ -80,7 +80,16 @@ if uploaded_file is not None:
 if st.button("🩺 Get Expert Advice"):
     result = ""
     with st.spinner('💬 Consulting AI Doctor...'):
-        client = InferenceClient(api_key="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")
+
+        from gradio_client import Client
+        
+        client = Client("KingNish/Very-Fast-Chatbot")
+        result = client.predict(
+        		Query=advice_prompt,
+        		api_name="/predict"
+        )
+
+        # client = InferenceClient(api_key="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")
 
         # advice_prompt = (
         #     f"You are a senior pulmonologist. A patient has undergone a chest X-ray and the AI detected: {result} "
@@ -93,18 +102,18 @@ if st.button("🩺 Get Expert Advice"):
         #     "(maximum 8 points)."
         # )
 
-        messages = [{"role": "user", "content": advice_prompt}]
-        stream = client.chat.completions.create(
-            model="HuggingFaceH4/zephyr-7b-beta",
-            messages=messages,
-            temperature=0.7,
-            max_tokens=512,
-            top_p=0.7,
-            stream=True
-        )
+        # messages = [{"role": "user", "content": advice_prompt}]
+        # stream = client.chat.completions.create(
+        #     model="HuggingFaceH4/zephyr-7b-beta",
+        #     messages=messages,
+        #     temperature=0.7,
+        #     max_tokens=512,
+        #     top_p=0.7,
+        #     stream=True
+        # )
 
-        for chunk in stream:
-            result += chunk.choices[0].delta.content
+        # for chunk in stream:
+        #     result += chunk.choices[0].delta.content
 
     # Ensure line breaks render correctly
     result = result.strip().replace("\n", "\n\n")  # Double newline = markdown list-friendly in Streamlit
