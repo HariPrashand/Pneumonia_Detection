@@ -31,7 +31,7 @@ if uploaded_file is not None:
     st.markdown("---")
     st.markdown("### 📸 Uploaded Image Preview")
     image = Image.open(uploaded_file)
-    st.image(image, caption="Chest X-ray", use_column_width=True, output_format='auto')
+    st.image(image, caption="Chest X-ray", use_container_width=True, output_format='auto')
 
     # Preprocess Image
     image = image.convert("L")  # Grayscale
